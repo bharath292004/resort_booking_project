@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resort-booking
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: resort-booking
+  template:
+    metadata:
+      labels:
+        app: resort-booking
+    spec:
+      containers:
+      - name: resort-booking
+        image: <ACR_LOGIN_SERVER>/resort-booking:1.0.0
+        ports:
+        - containerPort: 3000
