@@ -31,11 +31,10 @@ jobs:
           docker push $ACR_NAME.azurecr.io/resort-booking:${{ github.sha }}
 
       - name: Set kubectl context
-        uses: azure/aks-set-context@v2
+        uses: azure/aks-set-context@v4
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          cluster-name: ${{ env.AKS_NAME }}
           resource-group: ${{ env.RESOURCE_GROUP }}
+          cluster-name: ${{ env.AKS_NAME }}
 
       - name: Update image and deploy
         run: |
